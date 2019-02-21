@@ -1,0 +1,174 @@
+<ion-header >
+
+  <ion-toolbar  align-title="left" color="dark">
+      <button ion-button left menuToggle>
+        <ion-icon class="icon ion-home custom-icon" name="menu"></ion-icon>
+      </button>
+      <ion-title>ONXHUNT</ion-title>
+
+      <!-- Button for testing the login page -->
+      <ion-buttons end>
+          <button ion-button icon-only>
+            <ion-icon class="icon ion-home custom-icon" name="search"></ion-icon>
+          </button>
+      </ion-buttons>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="contentdiv">
+
+  <div class="bottombuttonscontainer">
+
+        <div class="upgradenotice">
+                <ion-grid >
+                    <ion-col>
+                        <div >
+                            <button class="daysleft">7 days trial left</button>
+                        </div>
+                    </ion-col>
+                    <br>
+        
+                    <ion-col>
+                        <div>
+                            <button class="upgradebtn">Upgrade</button>
+                            <!-- <p style="color:white; background: red; padding: 20px">Upgrade</p> -->
+                        </div>
+                    </ion-col>
+                </ion-grid>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+
+      <ion-grid style="background-color: #222">
+          <ion-row style="text-align:center;" >
+
+            <div class="testclass" >
+                <p><ion-icon name="ios-map" color="grey" ><br>Map Layers</ion-icon></p>
+            </div>
+  
+
+            <div class="testclass">
+                <p><ion-icon name="ios-radio" color="grey" ><br>Off-Grid</ion-icon></p>
+            </div>
+
+
+            <div class="testclass">
+                <p><ion-icon name="ios-folder-open" color="grey" ><br>My Content</ion-icon></p>
+            </div>
+
+
+            <div class="testclass" (click)="openOptions(3)">
+                <p><ion-icon name="ios-hammer" color="grey" ><br>Tools</ion-icon></p>
+            </div>
+
+
+            <div class="testclass" (click)="openOptions(4)">
+                <p><ion-icon name="ios-timer" color="grey" ><br>Tracker</ion-icon></p>
+            </div>
+
+          </ion-row>
+      </ion-grid>
+      
+
+  </div>
+
+
+
+
+
+
+  
+  <div class="optionscontainer">
+        <div *ngIf="showFive" class="trackercontainer">
+            <div><p style="font-size: 17px; color:white; text-decoration: underline" align="center">Track and Record Your Trip</p></div>
+            <div>
+                <ion-grid>
+                    <ion-row style="text-align:center;">
+
+                        <ion-col style="font-size: 18px; color:white">
+                                0.00<br>Time
+                        </ion-col>
+
+                        <ion-col style="font-size: 18px; color:white">
+                                0.00 mi<br>Distance
+                        </ion-col>
+
+                        <ion-col style="font-size: 18px; color:white">
+                                0.0 mph<br>Speed
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+
+
+                <button ion-button block color="secondary" >Start</button>
+                    
+            </div>
+        </div >
+
+        <div *ngIf="showFour" class="toolscontainer">
+                <div><p style="font-size: 17px; color:white; text-decoration: underline" align="center">Map Tools and Markups</p></div>
+                <div>
+                    <ion-grid>
+                        <ion-row style="text-align:center;">
+    
+                            <ion-col >
+                                        <p align="center" style="font-size:13px; color: white">
+                                            <img style="zoom:10%;" src="../../assets/icon/distance.svg">
+                                            <br>Line<br>Distance</p>
+                            </ion-col>
+
+                            <ion-col >
+                                    <p align="center" style="font-size:13px; color: white">
+                                        <img style="zoom:10%;" src="../../assets/icon/shape.svg">
+                                        <br>Area<br>Shape</p>
+                            </ion-col>
+
+
+            
+                            <ion-col >
+                                    <p align="center" style="font-size:13px; color: white">
+                                        <img style="zoom:10%;" src="../../assets/icon/destination.svg">
+                                        <br>Add<br>Waypoint</p>
+                            </ion-col>
+    
+                            <ion-col >
+                                    <p align="center" style="font-size:13px; color: white">
+                                        <img style="zoom:10%;" src="../../assets/icon/tracking.svg">
+                                        <br>Mark My<br>Location</p>
+                            </ion-col>
+    
+                        </ion-row>
+                    </ion-grid>
+                        
+                </div>
+                <br>
+            </div >
+  </div>
+
+
+  <!-- 
+
+  <div class="toolscontainer">
+
+  </div>
+
+  <div class="mycontentcontainer">
+
+  </div>
+
+  <div class="offgridcontainer">
+
+  </div>
+
+  <div class="maplayerscontainer">
+
+  </div>
+ -->
+
+</ion-content>

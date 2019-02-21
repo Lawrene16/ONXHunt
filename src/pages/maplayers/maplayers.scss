@@ -1,0 +1,51 @@
+page-maplayers {
+
+    .contentdiv{
+        background-color: transparent;
+    }
+
+    .contentdiv .scroll-content{
+        overflow: hidden;
+    }
+    .bottombuttonscontainer{
+        padding-top: 69.2vh;
+    }
+
+    .upgradebtn{
+        padding-top:10px;
+        padding-bottom:10px;            
+        padding-left: 20px;
+        padding-right: 20px;
+        background: #fe3300; 
+        color: white;
+        font-size: 18px;
+    }
+
+    .daysleft{
+        padding-top:5px;
+        padding-bottom:13px;            
+        padding-left: 8px;
+        padding-right: 7px;
+        background: #fff; 
+        color: #000;
+        font-size: 14px;
+    }
+    
+
+    .testclass{
+        text-align: center;
+        padding-left: 11px;
+        // background-color: #000;
+    }
+
+    .bottomTextclass{
+        text-align: center;
+        padding-left: 20px;
+    }
+
+    .optionscontainer{
+        padding: 10px;
+        height: 30vh;
+        background-color: #222;
+    }
+}

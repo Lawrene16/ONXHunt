@@ -47,42 +47,29 @@
       <ion-grid style="background-color: #222">
           <ion-row style="text-align:center;" >
 
-            <div class="testclass" >
-                <p><ion-icon name="ios-map" color="grey" ><br>Map Layers</ion-icon></p>
+            <div class="testclass">
+                <img style="zoom:6%;" src="../../assets/icon/map-spot.svg"><br>My Spots
             </div>
   
-
             <div class="testclass">
-                <p><ion-icon name="ios-radio" color="grey" ><br>Off-Grid</ion-icon></p>
+                    <img style="zoom:6%;" src="../../assets/icon/map.svg"><br>Map Layers
             </div>
-
-
-            <div class="testclass">
-                <p><ion-icon name="ios-folder-open" color="grey" ><br>My Content</ion-icon></p>
-            </div>
-
 
             <div class="testclass" (click)="openOptions(3)">
-                <p><ion-icon name="ios-hammer" color="grey" ><br>Tools</ion-icon></p>
+                <img style="zoom:6%;" src="../../assets/icon/world-wide-internet-signal.svg"><br>Off Grid
             </div>
 
-
             <div class="testclass" (click)="openOptions(4)">
-                <p><ion-icon name="ios-timer" color="grey" ><br>Tracker</ion-icon></p>
+                <img style="zoom:6%;" src="../../assets/icon/search.svg"><br>Search Spots
             </div>
 
           </ion-row>
       </ion-grid>
       
-
   </div>
 
 
 
-
-
-
-  
   <div class="optionscontainer">
         <div *ngIf="showFive" class="trackercontainer">
             <div><p style="font-size: 17px; color:white; text-decoration: underline" align="center">Track and Record Your Trip</p></div>

@@ -28050,12 +28050,12 @@ page-maplayers .daysleft {
 
 page-maplayers .testclass {
   text-align: center;
-  padding-left: 11px;
+  padding-left: 20px;
+  color: #fff;
 }
 
 page-maplayers .bottomTextclass {
   text-align: center;
-  padding-left: 20px;
 }
 
 page-maplayers .optionscontainer {

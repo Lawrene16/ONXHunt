@@ -1,6 +1,6 @@
 <ion-header >
 
-  <ion-toolbar  align-title="left" color="dark">
+  <ion-navbar transparent align-title="center" color="primary">
       <button ion-button left menuToggle>
         <ion-icon class="icon ion-home custom-icon" name="menu"></ion-icon>
       </button>
@@ -8,69 +8,102 @@
 
       <!-- Button for testing the login page -->
       <ion-buttons end>
-          <button ion-button icon-only>
-            <ion-icon class="icon ion-home custom-icon" name="search"></ion-icon>
+          <button ion-button icon-only *ngIf="!toggled" (click)="toggle()">
+            <ion-icon class="icon ion-home custom-icon" name="notifications"></ion-icon>
           </button>
       </ion-buttons>
 
-    </ion-toolbar>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="openModal()">
+          <ion-icon name="options" color="light"></ion-icon>
+        </button>
+      </ion-buttons>
+      <!-- <ion-searchbar
+       *ngIf="toggled"
+       [(ngModel)]="someValue"
+       (ionInput)="searchThis($event)"
+       (ionCancel)="cancelSearch($event)"
+       (ionClear) = "cancelSearch($event)"
+       [showCancelButton]="true">
+    </ion-searchbar> -->
+
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content class="contentdiv">
+    <div>
+            <div #map id="my-map">
+                </div>
 
-  <div class="bottombuttonscontainer">
+            <div class="upgradenotice">
+                    <ion-grid >
+                        <ion-col>
+                            <div >
+                                <button class="daysleft">7 days trial left</button>
+                            </div>
+                        </ion-col>                            <br>
+                
+                        <ion-col>
+                            <div>
+                                <button class="upgradebtn">Upgrade</button>
+                            </div>
+                        </ion-col>
+                    </ion-grid>
+            </div>
+                
+            <div class="bottombuttonscontainer">
 
-        <div class="upgradenotice">
-                <ion-grid >
-                    <ion-col>
-                        <div >
-                            <button class="daysleft">7 days trial left</button>
-                        </div>
-                    </ion-col>
-                    <br>
+                    <ion-grid style="background-color: #222; ">
+                      
+                      <ion-row  style="justify-content: center;" >
+              
+                          <div class="testclass">
+                              <img style="zoom:5%;" src="../../assets/icon/map-spot.svg"><br>My Spots
+                          </div>
+                
+                          <div class="testclass">
+                                  <img style="zoom:5%;" src="../../assets/icon/map.svg"><br>Map Layers
+                          </div>
+              
+                          <div class="testclass" (click)="openOptions(3)">
+                              <img style="zoom:5%;" src="../../assets/icon/world-wide-internet-signal.svg"><br>Off Grid
+                          </div>
+              
+                          <div class="testclass" (click)="openOptions(4)">
+                              <img style="zoom:5%;" src="../../assets/icon/search.svg"><br>Search Spots
+                          </div>
+              
+                        </ion-row>
+                    </ion-grid>
+                    
+            </div>
+
+            <div *ngIf="showThree" class="offgridcontainer">
+                <ion-grid>
+                    <ion-row style="text-align:center;">
+            
+                          <ion-col >
+                            <button ion-button block color="redlike"                                 (click)="openSaveModal()">
+                                     Save New Map
+                             </button>
+                           </ion-col>
+    
+                          <ion-col >
+                               <button ion-button block color="greytwo">
+                            <ion-icon name="pulse" color="light"></ion-icon>
         
-                    <ion-col>
-                        <div>
-                            <button class="upgradebtn">Upgrade</button>
-                            <!-- <p style="color:white; background: red; padding: 20px">Upgrade</p> -->
-                        </div>
-                    </ion-col>
-                </ion-grid>
-            </div>
+                                           Go Offline</button>
+                          </ion-col>
+                        </ion-row>
+             </ion-grid>
+                            
+            </div >
 
-            <br>
-            <br>
-            <br>
+    </div>
 
-
-      <ion-grid style="background-color: #222">
-          <ion-row style="text-align:center;" >
-
-            <div class="testclass">
-                <img style="zoom:6%;" src="../../assets/icon/map-spot.svg"><br>My Spots
-            </div>
-  
-            <div class="testclass">
-                    <img style="zoom:6%;" src="../../assets/icon/map.svg"><br>Map Layers
-            </div>
-
-            <div class="testclass" (click)="openOptions(3)">
-                <img style="zoom:6%;" src="../../assets/icon/world-wide-internet-signal.svg"><br>Off Grid
-            </div>
-
-            <div class="testclass" (click)="openOptions(4)">
-                <img style="zoom:6%;" src="../../assets/icon/search.svg"><br>Search Spots
-            </div>
-
-          </ion-row>
-      </ion-grid>
-      
-  </div>
-
-
-
-  <div class="optionscontainer">
+<!-- 
+    <div class="optionscontainer">
         <div *ngIf="showFive" class="trackercontainer">
             <div><p style="font-size: 17px; color:white; text-decoration: underline" align="center">Track and Record Your Trip</p></div>
             <div>
@@ -98,64 +131,6 @@
             </div>
         </div >
 
-        <div *ngIf="showFour" class="toolscontainer">
-                <div><p style="font-size: 17px; color:white; text-decoration: underline" align="center">Map Tools and Markups</p></div>
-                <div>
-                    <ion-grid>
-                        <ion-row style="text-align:center;">
-    
-                            <ion-col >
-                                        <p align="center" style="font-size:13px; color: white">
-                                            <img style="zoom:10%;" src="../../assets/icon/distance.svg">
-                                            <br>Line<br>Distance</p>
-                            </ion-col>
-
-                            <ion-col >
-                                    <p align="center" style="font-size:13px; color: white">
-                                        <img style="zoom:10%;" src="../../assets/icon/shape.svg">
-                                        <br>Area<br>Shape</p>
-                            </ion-col>
-
-
-            
-                            <ion-col >
-                                    <p align="center" style="font-size:13px; color: white">
-                                        <img style="zoom:10%;" src="../../assets/icon/destination.svg">
-                                        <br>Add<br>Waypoint</p>
-                            </ion-col>
-    
-                            <ion-col >
-                                    <p align="center" style="font-size:13px; color: white">
-                                        <img style="zoom:10%;" src="../../assets/icon/tracking.svg">
-                                        <br>Mark My<br>Location</p>
-                            </ion-col>
-    
-                        </ion-row>
-                    </ion-grid>
-                        
-                </div>
-                <br>
-            </div >
-  </div>
-
-
-  <!-- 
-
-  <div class="toolscontainer">
-
-  </div>
-
-  <div class="mycontentcontainer">
-
-  </div>
-
-  <div class="offgridcontainer">
-
-  </div>
-
-  <div class="maplayerscontainer">
-
-  </div>
- -->
+    </div> -->
 
 </ion-content>

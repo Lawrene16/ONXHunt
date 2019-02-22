@@ -1,6 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Component, ViewChild, ViewChildDecorator, ElementRef } from '@angular/core';
+import { IonicPage, NavController, Modal, ModalController, ModalOptions, ActionSheetController, NavParams, Content } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
+
+declare var google: any;
 /**
  * Generated class for the MaplayersPage page.
  *
@@ -15,26 +18,60 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 })
 export class MaplayersPage {
 
-  @ViewChild(Content) pagebody : Content
+  @ViewChild(Content) pagebody : Content;
+  @ViewChild('map') mapRef: ElementRef;
 
 
+  public toggled: boolean = false;
   showOne = false;
   showTwo = false;
   showThree = false;
   showFour = false;
-  showFive = false;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
+  constructor(public navCtrl: NavController, 
+    private modal: ModalController,
+    public actionSheetCtrl: ActionSheetController,
+    public navParams: NavParams) {
+    this.toggled = false;
   }
 
   ionViewWillEnter() {
-    console.log('ionViewDidLoad MaplayersPage');
-    // this.pagebody.scrollToBottom();
-
+    this.displayMap();
   }
 
+  displayMap(){
+    const location = new google.maps.LatLng('4.815554', '7.049844');
+
+    const options = {
+      center:location,
+      zoom: 12,
+      disableDefaultUI: true,
+      streetViewControl: false,
+      mapTypeId: 'hybrid'
+    };
+
+
+    const map = new google.maps.Map(this.mapRef.nativeElement, options);
+
+
+    this.addMarker(location, map);
+  }
+
+  addMarker(position,map){
+    return new google.maps.Marker({
+      position, map
+    });
+  }
+    // public toggle(): void {
+    //   this.toggled = !this.toggled;
+    // } 
+
+    toggle(){
+      this.navCtrl.push(HomePage);
+    }
+    // cancelSearch(){
+    //   this.toggle();
+    // }
 
 
   openOptions(num){
@@ -44,31 +81,29 @@ export class MaplayersPage {
         break;
 
       case 3:
-        if(this.showFour == false){
-          this.showFour = true; 
-          this.showFive = false;
+        if(this.showThree == false){
+          this.showThree = true; 
            this.showOne = false; 
            this.showTwo = false;
-          this.showThree = false;
-          this.pagebody.scrollToBottom();  
+          this.showFour = false;
+          // this.pagebody.scrollToBottom();  
           
         }else{
-          this.pagebody.scrollToTop(); 
-          this.showFour = false;
+          // this.pagebody.scrollToTop(); 
+          this.showThree = false;
         }
         break;
     
       case 4:
-        if(this.showFive == false){
-          this.showFour = false; 
-          this.showFive = true;
+        if(this.showFour == false){
+          this.showFour = true;
           this.showOne = false; 
            this.showTwo = false;
           this.showThree = false;
           this.pagebody.scrollToBottom();  
         }else{
           this.pagebody.scrollToTop(); 
-          this.showFive = false;
+          this.showFour = false;
         }
         break;
     
@@ -78,4 +113,57 @@ export class MaplayersPage {
 
   }
 
+  openModal(){
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Are you sure you want to logout',
+      buttons: [
+        {
+          text: 'Logout',
+          role: 'destructive',
+          handler: () => {
+            // this.logoutFacebook();
+            // this.logoutEmail();
+            // this.logoutTwitter();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+ 
+    actionSheet.present();
+  }
+
+
+  openSaveModal() {
+
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+
+    const myModalData = {
+      name: 'Paul Halliday',
+      occupation: 'Developer'
+    };
+
+    const myModal: Modal = this.modal.create('SavemodalPage', { data: myModalData }, myModalOptions);
+
+    myModal.present();
+
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+      console.log(data);
+    });
+
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+      console.log(data);
+    });
+
+  }
 }

@@ -12,7 +12,9 @@ import { MaplayersPage } from '../pages/maplayers/maplayers';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  // rootPage:any = MaplayersPage;
   rootPage:any = MaplayersPage;
+
 
   pages: Array<{title: string, icon:string,component: any, pageName:string, index:any}>;
 
